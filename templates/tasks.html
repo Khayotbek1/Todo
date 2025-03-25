@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TASKS</title>
+</head>
+<body>
+<h1>Barcha Tasklar</h1>
+   <ul class="task">
+        {% for task in tasks %}
+            <li>
+                <a class="task-link" href="/tasks/{{task.id}}/">{{ forloop.counter }}. {{ task.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+<a href="/tasks/not_done/"><button>Hali bajarilmagan tasklar</button></a>
+
+<a href="/"><button>Home</button></a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Barcha Studentlar</h1>
+ <ul class="students-list">
+        {% for student in students %}
+            <li>
+                <a class="student-link" href="/students/{{student.id}}/">{{ forloop.counter }}. {{ student.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+<a href="/students/course_3/"><button>Kamida 3 kurs bo'lgan</button></a>
+
+<a href="/"><button>Home</button></a>
+</body>
+</html>
