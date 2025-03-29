@@ -36,6 +36,6 @@ def not_done(request):
 def course_3(request):
     course = Student.objects.filter(course__gte = 3)
     context = {
-        'course': course,
+        'courses': course,
     }
     return render(request, 'course3.html', context )

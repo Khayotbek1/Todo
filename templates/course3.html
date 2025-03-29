@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>3-kurs va 3-kursdan yuqori talabalar</title>
 </head>
 <body>
-<h1>Barcha Tasklar</h1>
+<h1>Talabalar</h1>
    <ul class="task">
-        {% for task in tasks %}
+        {% for course in courses %}
             <li>
                 <a class="course-link" href="/students/course_3/{{student.id}}/">
-                  {{ forloop.counter }}. {{ student.name }}
+                  {{ forloop.counter }}. {{ course.name }}
                 </a>
             </li>
         {% endfor %}
     </ul>
+
+<a href="/students/"><button>Ortga</button></a>
+
 </body>
 </html>
