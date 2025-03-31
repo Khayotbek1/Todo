@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Confirm</title>
+    <style>
+        /* Umumiy stillar */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Konteyner */
+        div {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        /* Sarlavha */
+        h1 {
+            color: #c0392b;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            line-height: 1.4;
+        }
+
+        span {
+            color: #e74c3c;
+            font-weight: bold;
+            background: rgba(231, 76, 60, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Tugmalar konteyneri */
+        div div {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        /* Linklar */
+        a {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        /* Bekor qilish tugmasi */
+        a[href="/tasks/"] {
+            background: #3498db;
+            color: white;
+        }
+
+        a[href="/tasks/"]:hover {
+            background: #2980b9;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* O'chirish tugmasi */
+        a[href="{% url 'task-delete' task.id %}"] {
+            background: #e74c3c;
+            color: white;
+        }
+
+        a[href="{% url 'task-delete' task.id %}"]:hover {
+            background: #c0392b;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animatsiyalar */
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Tugmalar uchun animatsiya */
+        div div a {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        a[href="/tasks/"] { animation-delay: 0.2s; }
+        a[href="{% url 'task-delete' task.id %}"] { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div>
+  <h1><span>{{ task.name }}</span> ushbu taskni o'chirmoqchimisiz?</h1>
+  <div>
+    <a href="/tasks/">❌ Bekor qilish</a>
+    <a href="{% url 'task-delete' task.id %}">🗑️ O'chirish</a>
+  </div>
+</div>
+</body>
+</html>

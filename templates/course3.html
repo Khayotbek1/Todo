@@ -3,6 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <title>3-kurs va 3-kursdan yuqori talabalar</title>
+    <style>
+        /* Umumiy stillar */
+        body {
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(45deg, #a1c4fd, #c2e9fb);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Sarlavha */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            animation: fadeInDown 0.5s ease-out;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #2980b9;
+            border-radius: 2px;
+        }
+
+        /* Talabalar ro'yxati */
+        .task {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .task li {
+            background: rgba(255, 255, 255, 0.9);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: slideInUp 0.5s ease-out forwards;
+        }
+
+        .task li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .course-link {
+            color: #2980b9;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .course-link:hover {
+            color: #3498db;
+        }
+
+        /* Ortga tugmasi */
+        a[href="/students/"] {
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            background: #e67e22;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #d35400;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animatsiyalar */
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Har bir element uchun kechikish */
+        .task li:nth-child(1) { animation-delay: 0.1s; }
+        .task li:nth-child(2) { animation-delay: 0.2s; }
+        .task li:nth-child(3) { animation-delay: 0.3s; }
+        .task li:nth-child(4) { animation-delay: 0.4s; }
+        button { animation: slideInUp 0.5s ease-out forwards; animation-delay: 0.5s; }
+    </style>
 </head>
 <body>
 <h1>Talabalar</h1>
@@ -17,6 +140,5 @@
     </ul>
 
 <a href="/students/"><button>Ortga</button></a>
-
 </body>
 </html>

@@ -2,20 +2,172 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TASKS</title>
+    <title>Tasks</title>
+    <style>
+        /* Umumiy stillar */
+        body {
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(45deg, #f3e7e9, #e3eeff);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Sarlavha */
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            animation: slideIn 0.5s ease-out;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20%;
+            height: 3px;
+            background: #e67e22;
+            border-radius: 2px;
+        }
+
+        /* Create task linki */
+        a[href="create-task"] {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        ahref="create-task"]:hover {
+            background: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Tasklar ro'yxati */
+        .task {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .task li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .task li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .task-link {
+            color: #2196F3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .task-link:hover {
+            color: #1976D2;
+        }
+
+        /* Delete tugmasi */
+        button {
+            padding: 5px 15px;
+            border: none;
+            background: #ff4444;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #cc0000;
+            transform: scale(1.05);
+        }
+
+        /* Pastdagi tugmalar */
+        a[href="/tasks/not_done/"], a[href="/"] {
+            text-decoration: none;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        a[href="/tasks/not_done/"] button {
+            background: #FFA726;
+            padding: 10px 20px; /* Tugma hajmini kattalashtirdim */
+            border-radius: 25px; /* Dumaloq shakl */
+            transition: all 0.3s ease; /* Silliq o'tish */
+        }
+
+        a[href="/tasks/not_done/"] button:hover {
+            background: #FB8C00;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        a[href="/"] button {
+            background: #42A5F5;
+            padding: 10px 20px; /* Tugma hajmini kattalashtirdim */
+            border-radius: 25px; /* Dumaloq shakl */
+            transition: all 0.3s ease; /* Silliq o'tish */
+        }
+
+        a[href="/"] button:hover {
+            background: #1E88E5;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Animatsiyalar */
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .task li:nth-child(1) { animation-delay: 0.1s; }
+        .task li:nth-child(2) { animation-delay: 0.2s; }
+        .task li:nth-child(3) { animation-delay: 0.3s; }
+    </style>
 </head>
 <body>
-<h1>Barcha Tasklar</h1>
-   <ul class="task">
+    <h1>Barcha Tasklar</h1>
+
+    <a href="create-task">➕ Create task</a>
+    <ul class="task">
         {% for task in tasks %}
             <li>
                 <a class="task-link" href="/tasks/{{task.id}}/">{{ forloop.counter }}. {{ task.name }}</a>
+                <a href="{% url 'delete-confirm' task.id %}"><button>delete</button></a>
             </li>
         {% endfor %}
     </ul>
 
-<a href="/tasks/not_done/"><button>Hali bajarilmagan tasklar</button></a>
-
-<a href="/"><button>Home</button></a>
+    <a href="/tasks/not_done/"><button>Hali bajarilmagan tasklar</button></a>
+    <a href="/"><button>Home</button></a>
 </body>
 </html>

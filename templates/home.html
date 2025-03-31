@@ -2,10 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Todo Home</title>
+    <style>
+        /* Umumiy body stillari */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Linklar uchun konteyner */
+        .container {
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Linklar uchun umumiy style */
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* H1 uchun stillar */
+        h1 {
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Hover effekti */
+        a:hover h1 {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            color: #ffeb3b;
+        }
+
+        /* Klik qilingandagi animatsiya */
+        a:active h1 {
+            transform: scale(0.95);
+        }
+
+        /* Har bir element uchun o'ziga xos ranglar */
+        a:nth-child(1) h1 {
+            border: 2px solid #42a5f5;
+        }
+
+        a:nth-child(2) h1 {
+            border: 2px solid #66bb6a;
+        }
+
+        /* Sahifa yuklanganda animatsiya */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Har bir element uchun kechikish */
+        a:nth-child(1) h1 {
+            animation-delay: 0.2s;
+        }
+
+        a:nth-child(2) h1 {
+            animation-delay: 0.4s;
+        }
+    </style>
 </head>
 <body>
-<a href="/students/"><h1>Students</h1></a>
-<a href="/tasks"><h1>Tasks</h1></a>
+    <div class="container">
+        <a href="/students/"><h1>Students</h1></a>
+        <a href="/tasks"><h1>Tasks</h1></a>
+    </div>
 </body>
 </html>

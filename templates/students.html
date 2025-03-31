@@ -2,11 +2,143 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Students</title>
+    <style>
+        /* Umumiy stillar */
+        body {
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(120deg, #d4fc79, #96e6a1);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+        .age {
+            color: black;
+        }
+        .age:hover{
+            background: #dddddd;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sarlavha */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20%;
+            height: 3px;
+            background: #2c3e50;
+            border-radius: 2px;
+        }
+
+        /* Studentlar ro'yxati */
+        .students-list {
+            list-style: none;
+            padding: 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .students-list li {
+            background: rgba(255, 255, 255, 0.9);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .students-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .student-link {
+            color: #2980b9;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .student-link:hover {
+            color: #3498db;
+        }
+
+        /* Tugmalar */
+        a[href="/students/course_3/"], a[href="/"] {
+            text-decoration: none;
+            display: inline-block;
+            margin: 15px 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            letter-spacing: 1px;
+        }
+
+        a[href="/students/course_3/"] button {
+            background: #e67e22;
+        }
+
+        a[href="/students/course_3/"] button:hover {
+            background: #d35400;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        a[href="/"] button {
+            background: #8e44ad;
+        }
+
+        a[href="/"] button:hover {
+            background: #9b59b6;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        /* Animatsiyalar */
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .students-list li:nth-child(1) { animation-delay: 0.1s; }
+        .students-list li:nth-child(2) { animation-delay: 0.2s; }
+        .students-list li:nth-child(3) { animation-delay: 0.3s; }
+        .students-list li:nth-child(4) { animation-delay: 0.4s; }
+    </style>
 </head>
 <body>
-<h1>Barcha Studentlar</h1>
- <ul class="students-list">
+    <h1>Barcha Studentlar</h1>
+    <ul class="students-list">
         {% for student in students %}
             <li>
                 <a class="student-link" href="/students/{{student.id}}/">{{ forloop.counter }}. {{ student.name }}</a>
@@ -14,8 +146,8 @@
         {% endfor %}
     </ul>
 
-<a href="/students/course_3/"><button>Kamida 3 kurs bo'lgan</button></a>
-
-<a href="/"><button>Home</button></a>
+    <a href="/students/course_3/"><button>Kamida 3 kurs bo'lgan</button></a>
+    <a href="/students/age_20/"><button class="age">Yoshi 20dan katta</button></a>
+    <a href="/"><button>Home</button></a>
 </body>
 </html>
