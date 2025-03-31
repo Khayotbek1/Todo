@@ -104,6 +104,22 @@
             background: #cc0000;
             transform: scale(1.05);
         }
+        .gradiuent{
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .gradiuent:hover{
+            background: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
         /* Pastdagi tugmalar */
         a[href="/tasks/not_done/"], a[href="/"] {
@@ -168,6 +184,7 @@
     </ul>
 
     <a href="/tasks/not_done/"><button>Hali bajarilmagan tasklar</button></a>
+    <a class="gradiuent" href="/students/graduate_task/">Bitiruvchilarga tegish tasklar</a>
     <a href="/"><button>Home</button></a>
 </body>
 </html>

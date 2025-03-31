@@ -77,3 +77,13 @@ def age_20(request):
         'ages': age
     }
     return render(request, 'age_20.html', context)
+
+def graduate_task(request):
+    graduates = Student.objects.filter(course__gte=5)
+    tasks = Task.objects.filter(student__course__gte=5).order_by('name')
+
+    context = {
+        'graduates': graduates,
+        'tasks': tasks,
+    }
+    return render(request, 'graduate_task.html', context)

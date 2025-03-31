@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduate Tasks</title>
+    <style>
+        /* Barcha sahifa uchun fon */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1, h2 {
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 8px;
+            max-width: 500px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        li:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
+        }
+        .gradiuent{
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #333333;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .gradiuent:hover{
+            background: #dddddd;
+            color: #333333;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+
+        /* Bajarilgan va bajarilmagan statuslari */
+        .done {
+            color: #4CAF50;
+            font-weight: bold;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .not-done {
+            color: #ff4d4d;
+            font-weight: bold;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .student-name {
+            font-size: 14px;
+            color: #eee;
+            font-style: italic;
+        }
+
+        /* Animatsiya */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Bitiruvchilar va ularning rejalar</h1>
+
+    <h2>Bitiruvchilar</h2>
+    <ul>
+        {% for graduate in graduates %}
+            <li>{{ forloop.counter }}. {{ graduate.name }} - {{ graduate.course }}-kurs</li>
+        {% empty %}
+            <li>Bitiruvchi talabalar yo‘q.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Bitiruvchilarga tegishli rejalar</h2>
+    <ul>
+        {% for task in tasks %}
+           <li>
+                <strong>{{ forloop.counter }}. {{ task.name }}</strong> - {{ task.desc }}<br>
+                (<span class="{% if task.done %}done{% else %}not-done{% endif %}">
+                    {% if task.done %} <span>✔️ Bajarilgan</span> {% else %} <span>❌ Bajarilmagan</span> {% endif %}
+                </span>)
+                <div class="student-name">
+                    🎓 {{ task.student.name }} ({{ task.student.course }}-kurs)
+                </div>
+            </li>
+        {% empty %}
+            <li>Bitiruvchilarga tegishli rejalar yo‘q.</li>
+        {% endfor %}
+    </ul>
+    <a class="gradiuent" href="/tasks/">⬅️ Ortga</a>
+</body>
+</html>
